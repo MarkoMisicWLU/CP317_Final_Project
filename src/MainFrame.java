@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
     setFont(new Font("Bahnschrift", Font.PLAIN, 40));
     setTitle("Meal Maker");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setBounds(100, 100, 10000, 10000);
+    setBounds(100, 100,1920, 1080);
 
     try {
       final Image backgroundImage = ImageIO.read(new File("src/Images/background.jpg"));
