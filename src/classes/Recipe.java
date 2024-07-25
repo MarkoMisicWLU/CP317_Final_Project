@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Recipe{
     private int recipeTimeFrame;
@@ -8,10 +9,10 @@ public class Recipe{
     private String recipeInstructions;
     private ArrayList<String> recipeIngredients;
 
-    public Recipe(int timeFrame, String recipeDiet, ArrayList<String> ingredients){
+    public Recipe(int timeFrame, String recipeDiet, String ingredients, String instructions){
         this.recipeTimeFrame = timeFrame;
-        this.recipeIngredients = ingredients;
         this.recipeDietary = recipeDiet;
+        this.recipeIngredients = new ArrayList<>(Arrays.asList(ingredients.split(",")));
     }
 
     public int getRecipeTimeFrame() {
@@ -34,8 +35,8 @@ public class Recipe{
         return recipeIngredients;
     }
 
-    public void setRecipeIngredients(ArrayList<String> recipeIngredients) {
-        this.recipeIngredients = recipeIngredients;
+    public void setRecipeIngredients(String recipeIngredients) {
+        this.recipeIngredients = new ArrayList<>(Arrays.asList(recipeIngredients.split(",")));
     }
 
     public String getRecipeInstructions() {

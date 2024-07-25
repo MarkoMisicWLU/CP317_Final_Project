@@ -1,15 +1,16 @@
 package classes;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Preferences{
     private int userTimeFrame;
-    private ArrayList<String> userDietary;
+    private String userDietary;
     private ArrayList<String> userIngredients;
 
-    public Preferences(int timeFrame,ArrayList<String> dietList, ArrayList<String> ingredients){
+    public Preferences(int timeFrame,String dietList, String userIngredients){
         this.userTimeFrame = timeFrame;
         this.userDietary = dietList;
-        this.userIngredients = ingredients;
+        this.userIngredients = new ArrayList<>(Arrays.asList(userIngredients.split(",")));
     }
 
     public int getUserTimeFrame() {
@@ -20,19 +21,20 @@ public class Preferences{
         this.userTimeFrame = userTimeFrame;
     }
 
-    public ArrayList<String> getUserDietary() {
+    public String getUserDietary() {
         return userDietary;
     }
 
-    public void setUserDietary(ArrayList<String> userDietary) {
+    public void setUserDietary(String userDietary) {
         this.userDietary = userDietary;
     }  
 
     public ArrayList<String> getUserIngredients() {
+
         return userIngredients;
     }
 
-    public void setUserIngredients(ArrayList<String> userIngredients) {
-        this.userIngredients = userIngredients;
+    public void setUserIngredients(String userIngredients) {
+        this.userIngredients = new ArrayList<>(Arrays.asList(userIngredients.split(",")));
     }
 }

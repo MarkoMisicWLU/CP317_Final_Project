@@ -1,13 +1,19 @@
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import classes.*;
 
 public class MainFrame extends JFrame {
     private JPanel contentPane;
+    private static String ingredientsText;
+    private static String dietaryRestrictionsValue;
+    private static int timeFrameValue;
 
     public MainFrame() {
         setFont(new Font("Bahnschrift", Font.PLAIN, 40));
@@ -133,6 +139,13 @@ public class MainFrame extends JFrame {
         saveButton.setBorder(new LineBorder(borderColor, 1));
         saveButton.setOpaque(true);
         saveButton.setBackground(backgroundColor);
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ingredientsText = ingredientsTextArea.getText();
+                System.out.println(ingredientsText);
+            }
+        });
         contentPane.add(saveButton);
 
         JButton backButton = new JButton("Back");
@@ -188,6 +201,14 @@ public class MainFrame extends JFrame {
         saveButton.setBorder(new LineBorder(borderColor, 1));
         saveButton.setOpaque(true);
         saveButton.setBackground(backgroundColor);
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dietaryRestrictionsValue = (String) dietaryRestrictionsDropdown.getSelectedItem();
+                timeFrameValue = Integer.parseInt(timeframeTextField.getText());
+                System.out.println(timeFrameValue);
+            }
+        });
         contentPane.add(saveButton);
 
         JButton backButton = new JButton("Back");
