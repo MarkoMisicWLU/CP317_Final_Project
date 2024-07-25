@@ -169,7 +169,7 @@ public class MainFrame extends JFrame {
         dietaryRestrictionsDropdown.setBackground(backgroundColor);
         contentPane.add(dietaryRestrictionsDropdown);
 
-        JLabel timeframeLabel = new JLabel("Timeframe:");
+        JLabel timeframeLabel = new JLabel("Timeframe (Minutes):");
         timeframeLabel.setFont(new Font("Bahnschrift", Font.BOLD, 30));
         timeframeLabel.setBounds(150, 200, 600, 50);
         contentPane.add(timeframeLabel);
@@ -211,7 +211,7 @@ public class MainFrame extends JFrame {
     
         JLabel instructionsLabel = new JLabel("<html>" +
                                             "<div style='width: 1000px;'>" +
-                                            "1. Go into the User Settings and set the dietary restrictions and the timeframe available to make the meal, then save the settings.<br><br>" +
+                                            "1. Go into the User Settings and set the dietary restrictions and the timeframe available in minutes to make the meal, then save the settings.<br><br>" +
                                             "2. Type in the ingredients separated by commas with no spaces between the comma and the name of the ingredient, then click Save for the ingredients.<br><br>" +
                                             "3. Finally, click Find Meals for your results." +
                                             "</div>" +
