@@ -35,20 +35,4 @@ public class Preferences{
     public void setUserIngredients(ArrayList<String> userIngredients) {
         this.userIngredients = userIngredients;
     }
-
-    public void addDietary(String diet){
-        this.userDietary.add(diet);
-    }
-
-    public void removeDietary(String diet){
-        this.userDietary.remove(diet);
-    }
-
-    public void addIngredient(String ingredient){
-        this.userIngredients.add(ingredient);
-    }
-
-    public void removeIngredient(String ingredient){
-        this.userIngredients.remove(ingredient);
-    }
 }

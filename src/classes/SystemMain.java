@@ -1,11 +1,9 @@
 package classes;
 
-import java.util.ArrayList;
-
 public class SystemMain {
     private boolean matchStatus;
 
-    public Meal generateBestMatch(int userTimeFrame, ArrayList<String> userDietary, ArrayList<String> userIngredients) {
+    public Meal generateBestMatch(Preferences userPreferences) {
         return null;
     }
 
