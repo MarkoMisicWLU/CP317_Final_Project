@@ -11,8 +11,8 @@ import classes.*;
 
 public class MainFrame extends JFrame {
     private JPanel contentPane;
-    private static String ingredientsText;
-    private static String dietaryRestrictionsValue;
+    private static String ingredientsText = "Chicken,rice,black pepper,salt";
+    private static String dietaryRestrictionsValue = "Regular";
     private static int timeFrameValue;
 
     public MainFrame() {
@@ -45,7 +45,6 @@ public class MainFrame extends JFrame {
         contentPane.removeAll();
         contentPane.setLayout(null);
     
-        // Set border color
         Color borderColor = Color.BLACK;
         Color backgroundColor = Color.WHITE;
     
@@ -108,7 +107,6 @@ public class MainFrame extends JFrame {
         contentPane.removeAll();
         contentPane.setLayout(null);
     
-        // Set border color
         Color borderColor = Color.BLACK;
         Color backgroundColor = Color.WHITE;
     
@@ -124,7 +122,8 @@ public class MainFrame extends JFrame {
         ingredientsTextArea.setBorder(new LineBorder(borderColor, 1));
         ingredientsTextArea.setOpaque(true);
         ingredientsTextArea.setBackground(backgroundColor);
-    
+        ingredientsTextArea.setText(ingredientsText); // Set initial text
+
         JScrollPane scrollPane = new JScrollPane(ingredientsTextArea);
         scrollPane.setBounds(450, 100, 700, 300);
         scrollPane.setBorder(new LineBorder(borderColor, 1));
@@ -143,7 +142,6 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ingredientsText = ingredientsTextArea.getText();
-                System.out.println(ingredientsText);
             }
         });
         contentPane.add(saveButton);
@@ -165,7 +163,6 @@ public class MainFrame extends JFrame {
         contentPane.removeAll();
         contentPane.setLayout(null);
 
-        // Set border color
         Color borderColor = Color.BLACK;
         Color backgroundColor = Color.WHITE;
 
@@ -180,6 +177,10 @@ public class MainFrame extends JFrame {
         dietaryRestrictionsDropdown.setBorder(new LineBorder(borderColor, 1));
         dietaryRestrictionsDropdown.setOpaque(true);
         dietaryRestrictionsDropdown.setBackground(backgroundColor);
+        dietaryRestrictionsDropdown.addItem("Regular");
+        dietaryRestrictionsDropdown.addItem("Vegan");
+        dietaryRestrictionsDropdown.addItem("Pescatarian");
+        dietaryRestrictionsDropdown.setSelectedItem(dietaryRestrictionsValue); 
         contentPane.add(dietaryRestrictionsDropdown);
 
         JLabel timeframeLabel = new JLabel("Timeframe (Minutes):");
@@ -193,6 +194,7 @@ public class MainFrame extends JFrame {
         timeframeTextField.setBorder(new LineBorder(borderColor, 1));
         timeframeTextField.setOpaque(true);
         timeframeTextField.setBackground(backgroundColor);
+        timeframeTextField.setText(String.valueOf(timeFrameValue)); 
         contentPane.add(timeframeTextField);
 
         JButton saveButton = new JButton("Save");
@@ -206,7 +208,6 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dietaryRestrictionsValue = (String) dietaryRestrictionsDropdown.getSelectedItem();
                 timeFrameValue = Integer.parseInt(timeframeTextField.getText());
-                System.out.println(timeFrameValue);
             }
         });
         contentPane.add(saveButton);
@@ -224,6 +225,7 @@ public class MainFrame extends JFrame {
         contentPane.repaint();
     }
 
+
     private void showInstructions() {
         contentPane.removeAll();
         contentPane.setLayout(null);
@@ -240,7 +242,7 @@ public class MainFrame extends JFrame {
         instructionsLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 21));
 
         JScrollPane scrollPane = new JScrollPane(instructionsLabel);
-        scrollPane.setBounds(150, 100, 1200, 400); // Adjust bounds to fit in the content pane
+        scrollPane.setBounds(150, 100, 1200, 400); 
         scrollPane.setBorder(new LineBorder(borderColor, 1));
 
         contentPane.add(scrollPane);
