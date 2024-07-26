@@ -45,7 +45,6 @@ public class MainFrame extends JFrame {
         contentPane.removeAll();
         contentPane.setLayout(null);
     
-        // Set border color
         Color borderColor = Color.BLACK;
         Color backgroundColor = Color.WHITE;
     
@@ -108,7 +107,6 @@ public class MainFrame extends JFrame {
         contentPane.removeAll();
         contentPane.setLayout(null);
     
-        // Set border color
         Color borderColor = Color.BLACK;
         Color backgroundColor = Color.WHITE;
     
@@ -144,7 +142,6 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ingredientsText = ingredientsTextArea.getText();
-                System.out.println(ingredientsText);
             }
         });
         contentPane.add(saveButton);
@@ -183,7 +180,7 @@ public class MainFrame extends JFrame {
         dietaryRestrictionsDropdown.addItem("Regular");
         dietaryRestrictionsDropdown.addItem("Vegan");
         dietaryRestrictionsDropdown.addItem("Pescatarian");
-        dietaryRestrictionsDropdown.setSelectedItem(dietaryRestrictionsValue); // Set initial value
+        dietaryRestrictionsDropdown.setSelectedItem(dietaryRestrictionsValue); 
         contentPane.add(dietaryRestrictionsDropdown);
 
         JLabel timeframeLabel = new JLabel("Timeframe (Minutes):");
@@ -197,7 +194,7 @@ public class MainFrame extends JFrame {
         timeframeTextField.setBorder(new LineBorder(borderColor, 1));
         timeframeTextField.setOpaque(true);
         timeframeTextField.setBackground(backgroundColor);
-        timeframeTextField.setText(String.valueOf(timeFrameValue)); // Set initial value
+        timeframeTextField.setText(String.valueOf(timeFrameValue)); 
         contentPane.add(timeframeTextField);
 
         JButton saveButton = new JButton("Save");
@@ -211,8 +208,6 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dietaryRestrictionsValue = (String) dietaryRestrictionsDropdown.getSelectedItem();
                 timeFrameValue = Integer.parseInt(timeframeTextField.getText());
-                System.out.println("Dietary Restrictions: " + dietaryRestrictionsValue);
-                System.out.println("Timeframe: " + timeFrameValue);
             }
         });
         contentPane.add(saveButton);
@@ -247,7 +242,7 @@ public class MainFrame extends JFrame {
         instructionsLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 21));
 
         JScrollPane scrollPane = new JScrollPane(instructionsLabel);
-        scrollPane.setBounds(150, 100, 1200, 400); // Adjust bounds to fit in the content pane
+        scrollPane.setBounds(150, 100, 1200, 400); 
         scrollPane.setBorder(new LineBorder(borderColor, 1));
 
         contentPane.add(scrollPane);
