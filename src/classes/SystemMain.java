@@ -28,10 +28,10 @@ public class SystemMain {
             Statement st = con.createStatement();
             
   
-            String sql = "SELECT * FROM Recipes WHERE VEGAN_OR_VEG = '" + dietaryRestrictions + 
-                         "' AND INGREDIENT_1 = '" + userIngredient1 + 
-                         "' AND INGREDIENT_2 = '" + userIngredient2 + 
-                         "' AND INGREDIENT_3 = '" + userIngredient3 + 
+            String sql = "SELECT * FROM Recipes WHERE VEGAN_OR_VEG LIKE '" + dietaryRestrictions + 
+                         "' AND INGREDIENT_1 LIKE '" + userIngredient1 + 
+                         "' AND INGREDIENT_2 LIKE '" + userIngredient2 + 
+                         "' AND INGREDIENT_3 LIKE '" + userIngredient3 + 
                          "' AND TIME_MINS <= " + userTimeFrame;
 
             
