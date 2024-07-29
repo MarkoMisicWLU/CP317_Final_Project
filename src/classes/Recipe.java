@@ -13,6 +13,7 @@ public class Recipe{
         this.recipeTimeFrame = timeFrame;
         this.recipeDietary = recipeDiet;
         this.recipeIngredients = new ArrayList<>(Arrays.asList(ingredients.split(",")));
+        this.recipeInstructions = instructions;
     }
 
     public int getRecipeTimeFrame() {
@@ -35,8 +36,8 @@ public class Recipe{
         return recipeIngredients;
     }
 
-    public void setRecipeIngredients(String recipeIngredients) {
-        this.recipeIngredients = new ArrayList<>(Arrays.asList(recipeIngredients.split(",")));
+    public void setRecipeIngredients(String ingredients) {
+        this.recipeIngredients = new ArrayList<>(Arrays.asList(ingredients.split(",")));
     }
 
     public String getRecipeInstructions() {

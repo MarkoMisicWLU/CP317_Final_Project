@@ -3,6 +3,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,9 +13,9 @@ import classes.*;
 
 public class MainFrame extends JFrame {
     private JPanel contentPane;
-    private static String ingredientsText = "Chicken,rice,black pepper,salt";
-    private static String dietaryRestrictionsValue = "Regular";
-    private static int timeFrameValue;
+    private static String ingredientsText = "Avocado,Bread,Olive oil";
+    private static String dietaryRestrictionsValue = "Neither";
+    private static int timeFrameValue = 10;
 
     public MainFrame() {
         setFont(new Font("Bahnschrift", Font.PLAIN, 40));
@@ -98,6 +100,7 @@ public class MainFrame extends JFrame {
         configButton.addActionListener(e -> configureIngredients());
         settingsButton.addActionListener(e -> userSettings());
         instructButton.addActionListener(e -> showInstructions());
+        findButton.addActionListener(e -> findMeal());
 
         contentPane.revalidate();
         contentPane.repaint();
@@ -177,9 +180,9 @@ public class MainFrame extends JFrame {
         dietaryRestrictionsDropdown.setBorder(new LineBorder(borderColor, 1));
         dietaryRestrictionsDropdown.setOpaque(true);
         dietaryRestrictionsDropdown.setBackground(backgroundColor);
-        dietaryRestrictionsDropdown.addItem("Regular");
+        dietaryRestrictionsDropdown.addItem("Neither");
         dietaryRestrictionsDropdown.addItem("Vegan");
-        dietaryRestrictionsDropdown.addItem("Pescatarian");
+        dietaryRestrictionsDropdown.addItem("Vegetarian");
         dietaryRestrictionsDropdown.setSelectedItem(dietaryRestrictionsValue); 
         contentPane.add(dietaryRestrictionsDropdown);
 
@@ -259,6 +262,76 @@ public class MainFrame extends JFrame {
         contentPane.revalidate();
         contentPane.repaint();
     }
+
+    private void findMeal() {
+    String ingredients = ingredientsText;
+    String dietaryRestrictions = dietaryRestrictionsValue; 
+    int timeFrame = timeFrameValue;
+
+    
+    Preferences userPreferences = new Preferences(timeFrame, dietaryRestrictions, ingredients);
+  
+    SystemMain main = new SystemMain();
+   
+    ArrayList<Meal> meals = main.generateBestMatch(userPreferences);
+
+    displayMeals(meals);
+}
+
+private void displayMeals(ArrayList<Meal> meals) {
+    contentPane.removeAll();
+    contentPane.setLayout(null);
+
+    Color borderColor = Color.BLACK;
+    Color backgroundColor = Color.WHITE;
+
+    JLabel resultsLabel = new JLabel("Recommended Meals:");
+    resultsLabel.setFont(new Font("Bahnschrift", Font.BOLD, 30));
+    resultsLabel.setBounds(150, 50, 400, 50);
+    contentPane.add(resultsLabel);
+
+    JTextArea resultsTextArea = new JTextArea();
+    resultsTextArea.setFont(new Font("Bahnschrift", Font.PLAIN, 21));
+    resultsTextArea.setLineWrap(true);
+    resultsTextArea.setWrapStyleWord(true);
+    resultsTextArea.setBorder(new LineBorder(borderColor, 1));
+    resultsTextArea.setOpaque(true);
+    resultsTextArea.setBackground(backgroundColor);
+    resultsTextArea.setEditable(false);
+
+    StringBuilder sb = new StringBuilder();
+    for (Meal meal : meals) {
+        Recipe recipe = meal.getMealRecipe();
+        String ingredients = String.join(", ", recipe.getRecipeIngredients());
+        sb.append("Meal Name: ").append(meal.getMealName()).append("\n")
+          .append("Time Frame: ").append(recipe.getRecipeTimeFrame()).append(" minutes\n")
+          .append("Dietary Info: ").append(recipe.getRecipeDietary()).append("\n")
+          .append("Ingredients: ").append(ingredients).append("\n")
+          .append("Instructions: ").append(recipe.getRecipeInstructions()).append("\n")
+          .append("-----\n");
+    }
+
+    resultsTextArea.setText(sb.toString());
+
+    JScrollPane scrollPane = new JScrollPane(resultsTextArea);
+    scrollPane.setBounds(150, 100, 1200, 600);
+    scrollPane.setBorder(new LineBorder(borderColor, 1));
+
+    contentPane.add(scrollPane);
+
+    JButton backButton = new JButton("Back");
+    backButton.setFont(new Font("Bahnschrift", Font.PLAIN, 21));
+    backButton.setBounds(600, 750, 300, 100);
+    backButton.setBorder(new LineBorder(borderColor, 1));
+    backButton.setOpaque(true);
+    backButton.setBackground(backgroundColor);
+    backButton.addActionListener(e -> initMainMenu());
+    contentPane.add(backButton);
+
+    contentPane.revalidate();
+    contentPane.repaint();
+}
+
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {

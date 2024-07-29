@@ -22,6 +22,7 @@ public class Preferences{
     }
 
     public String getUserDietary() {
+        
         return userDietary;
     }
 
@@ -29,12 +30,21 @@ public class Preferences{
         this.userDietary = userDietary;
     }  
 
+    
+
     public ArrayList<String> getUserIngredients() {
 
         return userIngredients;
     }
 
     public void setUserIngredients(String userIngredients) {
-        this.userIngredients = new ArrayList<>(Arrays.asList(userIngredients.split(",")));
+        String[] items = userIngredients.split(",");
+        ArrayList<String> userIngredientsarray = new ArrayList<>();
+
+        for (String item : items){
+            userIngredientsarray.add(item.trim());
+
+        }
+        this.userIngredients = userIngredientsarray;
     }
 }
