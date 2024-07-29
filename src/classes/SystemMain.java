@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class SystemMain {
-    private boolean matchStatus;
     
 
     public ArrayList<Meal> generateBestMatch(Preferences userPreferences) {
